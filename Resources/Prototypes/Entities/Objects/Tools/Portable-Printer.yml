@@ -7,6 +7,10 @@
     - type: Sprite
       sprite: Objects/Tools/Portable-Printer.rsi
       state: icon
+
+    - type: TechnologyDatabase
+    - type: ResearchClient
+    
     - type: HandheldPrinter
       producingSound: /Audio/Machines/scanning.ogg
       idleState: icon
@@ -14,13 +18,15 @@
       staticPacks:
       - StarlightDocs
 
+    # - type: Lathe
+
     - type: ActivatableUI
       key: enum.LatheUiKey.Key
 
     - type: UserInterface
       interfaces:
         enum.LatheUiKey.Key:
-          type: LatheBoundUserInterface
+         type: LatheBoundUserInterface
         enum.ResearchClientUiKey.Key:
          type: ResearchClientBoundUserInterface
 
