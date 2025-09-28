@@ -4,7 +4,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.FarHorizons.Tools.HandheldPrinter
+namespace Content.Shared._FarHorizons.Tools.HandheldPrinter
 {
     [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
     public sealed partial class HandheldPrinterComponent : Component

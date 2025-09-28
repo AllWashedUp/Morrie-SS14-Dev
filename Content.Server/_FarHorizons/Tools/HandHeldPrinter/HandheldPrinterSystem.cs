@@ -12,7 +12,7 @@ using Content.Shared.Power;
 using Content.Shared.Lathe;
 using Content.Shared.Research.Components;
 using Content.Shared.UserInterface;
-using Content.Shared.FarHorizons.Tools.HandheldPrinter;
+using Content.Shared._FarHorizons.Tools.HandheldPrinter;
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Research.Prototypes;
 using System.Linq;
@@ -23,7 +23,7 @@ using JetBrains.Annotations;
 using Robust.Shared.Log;
 using Content.Server.Lathe.Components;
 
-namespace Content.Server.FarHorizons.Tools.HandheldPrinter.Systems;
+namespace Content.Server._FarHorizons.Tools.HandheldPrinter.Systems;
 
 public sealed class HandheldPrinterSystem : HandheldPrinterSharedSystem
 {
@@ -55,7 +55,7 @@ public sealed class HandheldPrinterSystem : HandheldPrinterSharedSystem
 
         SubscribeLocalEvent<HandheldPrinterComponent, BeforeActivatableUIOpenEvent>((u, c, _) => UpdateUserInterfaceState(u, c));
         SubscribeLocalEvent<HandheldPrinterComponent, MaterialAmountChangedEvent>(OnMaterialAmountChanged);
-        SubscribeLocalEvent<TechnologyDatabaseComponent, Shared.FarHorizons.Tools.HandheldPrinter.LatheGetRecipesEvent>(OnGetRecipes);
+        SubscribeLocalEvent<TechnologyDatabaseComponent, Shared._FarHorizons.Tools.HandheldPrinter.LatheGetRecipesEvent>(OnGetRecipes);
 
 
 
@@ -110,7 +110,7 @@ public sealed class HandheldPrinterSystem : HandheldPrinterSharedSystem
 
     public List<ProtoId<LatheRecipePrototype>> GetAvailableRecipes(EntityUid uid, HandheldPrinterComponent component, bool getUnavailable = false)
     {
-        var ev = new Shared.FarHorizons.Tools.HandheldPrinter.LatheGetRecipesEvent((uid, component), getUnavailable);
+        var ev = new Shared._FarHorizons.Tools.HandheldPrinter.LatheGetRecipesEvent((uid, component), getUnavailable);
         Log.Debug($"{component.StaticPacks}");
         AddRecipesFromPacks(ev.Recipes, component.StaticPacks);
         RaiseLocalEvent(uid, ev);
@@ -155,7 +155,7 @@ public sealed class HandheldPrinterSystem : HandheldPrinterSharedSystem
         lathe.ProductionLength = time;
         component.CurrentRecipe = recipe;
 
-        var ev = new Shared.FarHorizons.Tools.HandheldPrinter.LatheStartPrintingEvent(recipe);
+        var ev = new Shared._FarHorizons.Tools.HandheldPrinter.LatheStartPrintingEvent(recipe);
         RaiseLocalEvent(uid, ref ev);
 
         _audio.PlayPvs(component.ProducingSound, uid);
@@ -216,7 +216,7 @@ public sealed class HandheldPrinterSystem : HandheldPrinterSharedSystem
     /// <summary>
     /// Adds every unlocked recipe from each pack to the recipes list.
     /// </summary>
-    public void AddRecipesFromDynamicPacks(ref Shared.FarHorizons.Tools.HandheldPrinter.LatheGetRecipesEvent args, TechnologyDatabaseComponent database, IEnumerable<ProtoId<LatheRecipePackPrototype>> packs)
+    public void AddRecipesFromDynamicPacks(ref Shared._FarHorizons.Tools.HandheldPrinter.LatheGetRecipesEvent args, TechnologyDatabaseComponent database, IEnumerable<ProtoId<LatheRecipePackPrototype>> packs)
     {
         foreach (var id in packs)
         {
@@ -229,7 +229,7 @@ public sealed class HandheldPrinterSystem : HandheldPrinterSharedSystem
         }
     }
 
-    private void OnGetRecipes(EntityUid uid, TechnologyDatabaseComponent component, Shared.FarHorizons.Tools.HandheldPrinter.LatheGetRecipesEvent args)
+    private void OnGetRecipes(EntityUid uid, TechnologyDatabaseComponent component, Shared._FarHorizons.Tools.HandheldPrinter.LatheGetRecipesEvent args)
     {
         if (uid == args.Lathe)
         {

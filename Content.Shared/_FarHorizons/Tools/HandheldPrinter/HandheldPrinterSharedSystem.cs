@@ -9,7 +9,7 @@ using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
-namespace Content.Shared.FarHorizons.Tools.HandheldPrinter;
+namespace Content.Shared._FarHorizons.Tools.HandheldPrinter;
 
 /// <summary>
 /// This handles...

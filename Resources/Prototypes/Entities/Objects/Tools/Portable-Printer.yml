@@ -18,7 +18,7 @@
       staticPacks:
       - StarlightDocs
 
-    # - type: Lathe
+     #- type: Lathe
 
     - type: ActivatableUI
       key: enum.LatheUiKey.Key
@@ -26,7 +26,7 @@
     - type: UserInterface
       interfaces:
         enum.LatheUiKey.Key:
-         type: LatheBoundUserInterface
+         type: HandheldPrinterBoundUserInterface
         enum.ResearchClientUiKey.Key:
          type: ResearchClientBoundUserInterface
 

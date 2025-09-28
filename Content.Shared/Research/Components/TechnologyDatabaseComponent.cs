@@ -4,7 +4,7 @@ using Content.Shared.Research.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Content.Shared.FarHorizons.Tools.HandheldPrinter;
+using Content.Shared._FarHorizons.Tools.HandheldPrinter;
 
 namespace Content.Shared.Research.Components;
 
