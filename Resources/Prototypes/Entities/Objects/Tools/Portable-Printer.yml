@@ -1,0 +1,51 @@
+- type: entity
+  parent: BaseHandheldComputer
+  id: HandPrinter
+  name: Handheld Printer
+  description: A handy dandy handheld printer used for all your on the go bureaucratic needs! Nerd!
+  components:
+    - type: Sprite
+      sprite: Objects/Tools/Portable-Printer.rsi
+      state: icon
+
+    - type: TechnologyDatabase
+    - type: ResearchClient
+    
+    - type: HandheldPrinter
+      producingSound: /Audio/Machines/scanning.ogg
+      idleState: icon
+      runningState: building
+      staticPacks:
+      - StarlightDocs
+
+     #- type: Lathe
+
+    - type: ActivatableUI
+      key: enum.LatheUiKey.Key
+
+    - type: UserInterface
+      interfaces:
+        enum.LatheUiKey.Key:
+         type: HandheldPrinterBoundUserInterface
+        enum.ResearchClientUiKey.Key:
+         type: ResearchClientBoundUserInterface
+
+    - type: PowerCellDraw
+      drawRate: 1.2
+    - type: ToggleCellDraw
+
+    - type: MaterialStorage
+      whitelist:
+        tags:
+        - Document
+      storage:
+        SheetPrinter: 0
+
+    - type: ItemSlots
+      slots:
+        cell_slot:
+          name: power-cell-slot-component-slot-name-default
+          startingItem: PowerCellMicroreactor
+
+    - type: Transform
+      anchored: false
